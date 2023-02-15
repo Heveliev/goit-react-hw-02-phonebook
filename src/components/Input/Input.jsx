@@ -1,15 +1,20 @@
 import PropTypes from 'prop-types';
 import { ContactInput, Title } from './Input.styled';
 
-export const Input = ({value,onChange,type,name,pattern,title,titleBox}) =>{
+
+
+
+
+
+export const Input = ({value,onChange,type,pattern,name,title,titleBox}) =>{
     return(<>
     <Title>{titleBox}</Title>
     <ContactInput
     value={value}
     onChange={onChange}
     type={type}
-    name={name}
     pattern={pattern}
+    name={name}
     title={title}
     required/>
     </>
