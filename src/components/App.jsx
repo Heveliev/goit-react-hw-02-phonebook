@@ -23,6 +23,12 @@ class App extends React.Component{
     })
   }
 
+searchHandle = evt =>{
+  const evtTarget = evt.currentTarget.value;
+ this.setState({filter: evtTarget})
+ 
+}
+
   render(){
     const list = this.state.contacts.length;
     return (<>
@@ -30,7 +36,7 @@ class App extends React.Component{
       <InputBox onSubmit={this.formSubmitHandler}/>
     </Section>
       <Section title='Contacts' >
-      <SearchContact/>
+      <SearchContact value={this.state.filter} onChange={this.searchHandle}/>
         {list ? <ContactList values={this.state.contacts}/> : ''}
       </Section>
       </>

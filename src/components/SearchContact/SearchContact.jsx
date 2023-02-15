@@ -2,11 +2,13 @@ import { Input } from "./SearchContact.styled";
 
 
 
-export const SearchContact = ()=>{
+export const SearchContact = ({value, onChange})=>{
     return(
         <>
         <h4>Find contacts by name</h4>
         <Input
+        value={value}
+        onChange={onChange}
     type="text"
     name="name"
     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
