@@ -8,7 +8,7 @@ import { ContactInput, Title } from './Input.styled';
 
 export const Input = ({value,onChange,type,pattern,name,title,titleBox}) =>{
     return(<>
-    <Title>{titleBox}</Title>
+    <Title>{titleBox}
     <ContactInput
     value={value}
     onChange={onChange}
@@ -16,7 +16,7 @@ export const Input = ({value,onChange,type,pattern,name,title,titleBox}) =>{
     pattern={pattern}
     name={name}
     title={title}
-    required/>
+    required/></Title>
     </>
 
     )

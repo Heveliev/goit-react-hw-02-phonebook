@@ -14,7 +14,13 @@ margin-bottom:20px;
 }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.label`
+width:300;
+display:flex;
+flex-wrap:wrap;
+flex-direction:column;
+justify-content:center;
+aling-item:center;
 font-weight:400;
 color:#4C0099;
 `;

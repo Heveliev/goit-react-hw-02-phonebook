@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
 
 
-export const Box = styled.div`
-
+export const Box = styled.form`
+display:flex;
+flex-wrap:wrap;
+flex-direction:column;
 `;
 export const Btn = styled.button`
+width:100px;
 display:block;
 background-color:#FFCCE5;
 border:none;
