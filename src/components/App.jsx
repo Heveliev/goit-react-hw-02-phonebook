@@ -14,13 +14,7 @@ class App extends React.Component{
 
   handleInputChange = evt => {
     let target = evt.currentTarget;
-    console.log(target.name)
-    this.setState(prevState=>{console.log([target.name]) 
-    return {[target.name]: prevState[target.value] }}
-
-    )
-    
-    // this.setState({})
+    this.setState({[target.name]:target.value.trim()})
   }
 
 
