@@ -4,6 +4,7 @@ import {InputBox} from './InputBox/InputBox';
 import {ContactList} from './ContactList/ContactList';
 import { nanoid } from 'nanoid';
 import {SearchContact} from './SearchContact/SearchContact';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 
@@ -17,9 +18,22 @@ class App extends React.Component{
   }
 
   formSubmitHandler = data =>{
-    data.id = nanoid();
+
+    const {contacts} = this.state;
+    const {name,number} = data;
+       if (contacts.find(contact=>contact.name === name) ){
+        Notify.info(`${name} is already in contacts.`);
+        return
+
+       }
+       const newContact = {
+        id: nanoid(),
+        name,
+        number
+      };
+
     this.setState(({contacts})=>{
-      return {contacts: [data,...contacts]}
+      return {contacts: [newContact, ...contacts]}
     })
   }
 
@@ -29,15 +43,29 @@ searchHandle = evt =>{
  
 }
 
+filterContactsFunc = ()=>{
+  const normaliaedFilter = this.state.filter.toLowerCase();
+  return this.state.contacts.filter(contact=>contact.name.toLowerCase().includes(normaliaedFilter));
+}
+
+
+deleteContact = (contactId)=>{
+this.setState(prevState=>({
+  contacts: prevState.contacts.filter(contact=>contact.id !==contactId),})
+)
+}
+
   render(){
     const list = this.state.contacts.length;
+   
+    const filterContacts = this.filterContactsFunc();
     return (<>
     <Section title='Phonebook' >
       <InputBox onSubmit={this.formSubmitHandler}/>
     </Section>
       <Section title='Contacts' >
       <SearchContact value={this.state.filter} onChange={this.searchHandle}/>
-        {list ? <ContactList values={this.state.contacts}/> : ''}
+        {list ? <ContactList onDeleteContact={this.deleteContact}  values={filterContacts}/> : ''}
       </Section>
       </>
         );

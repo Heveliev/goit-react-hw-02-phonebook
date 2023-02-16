@@ -1,5 +1,5 @@
 import { Input } from "./SearchContact.styled";
-
+import PropTypes from 'prop-types';
 
 
 export const SearchContact = ({value, onChange})=>{
@@ -17,4 +17,8 @@ export const SearchContact = ({value, onChange})=>{
 />
         </>
     )
+}
+SearchContact.propTypes = {
+    value:PropTypes.string.isRequired ,
+    onChange:PropTypes.func.isRequired
 }
