@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section/Section';
-import {InputBox} from './InputBox/InputBox';
+import {InputForm} from './InputForm/InputForm';
 import {ContactList} from './ContactList/ContactList';
 import { nanoid } from 'nanoid';
 import {SearchContact} from './SearchContact/SearchContact';
@@ -61,7 +61,7 @@ this.setState(prevState=>({
     const filterContacts = this.filterContactsFunc();
     return (<>
     <Section title='Phonebook' >
-      <InputBox onSubmit={this.formSubmitHandler}/>
+      <InputForm onSubmit={this.formSubmitHandler}/>
     </Section>
       <Section title='Contacts' >
       <SearchContact value={this.state.filter} onChange={this.searchHandle}/>
